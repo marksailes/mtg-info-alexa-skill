@@ -1,0 +1,4 @@
+MtgCastingCost what mana cost is {cardname}
+MtgCastingCost what is the casting cost of {cardname}
+MtgDescription what is the text of {cardname}
+MtgDescription what does {cardname} do

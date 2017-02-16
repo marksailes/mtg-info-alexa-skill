@@ -1,0 +1,40 @@
+{
+  "intents": [
+    {
+      "intent": "MtgCastingCost",
+      "slots":[
+        {
+          "name":"cardname",
+          "type":"MTG_CARD_NAME"
+        }
+      ]
+    },
+    {
+      "intent": "MtgDescription",
+      "slots":[
+        {
+          "name":"cardname",
+          "type":"MTG_CARD_NAME"
+        }
+      ]
+    },
+    {
+      "intent": "MtgFullInformation",
+      "slots":[
+        {
+          "name":"cardname",
+          "type":"MTG_CARD_NAME"
+        }
+      ]
+    },
+    {
+      "intent": "AMAZON.HelpIntent"
+    },
+    {
+      "intent": "AMAZON.StopIntent"
+    },
+    {
+      "intent": "AMAZON.CancelIntent"
+    }
+  ]
+}
