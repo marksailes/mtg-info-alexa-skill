@@ -24,7 +24,11 @@ public class MtgCardInfoSpeechlet implements Speechlet {
     private static final String AMAZON_HELP_INTENT = "AMAZON.HelpIntent";
     private static final String AMAZON_STOP_INTENT = "AMAZON.StopIntent";
     private static final String AMAZON_CANCEL_INTENT = "AMAZON.CancelIntent";
-    public static final String CARDNAME_SLOT_KEY = "cardname";
+
+    private static final String CARDNAME_SLOT_KEY = "cardname";
+
+    private static final String CAST_COST_SENTANCE_FORMAT = "The casting cost for %s is %s";
+    private static final String DESCRIPTION_SENTANCE_FORMAT = "The rules text for %s is %s.";
 
     private MtgCardInfo mtgCardInfo = new DeckbrewCardInfo();
 
@@ -34,7 +38,7 @@ public class MtgCardInfoSpeechlet implements Speechlet {
 
     public SpeechletResponse onLaunch(final LaunchRequest request, final Session session) throws SpeechletException {
         log.info("onLaunch requestId={}, sessionId={}", request.getRequestId(), session.getSessionId());
-        return SimpleResponseFactory.simpleAskResponse("Welcome to the Alexa Skills Kit, you can say hello", "HelloWorld");
+        return SimpleResponseFactory.simpleAskResponse("Welcome to Magic Info, you can ask about casting costs and rules text", "Magic Info");
     }
 
     public SpeechletResponse onIntent(final IntentRequest request, final Session session) throws SpeechletException {
@@ -73,16 +77,15 @@ public class MtgCardInfoSpeechlet implements Speechlet {
 
     private SpeechletResponse getCastingCostResponse(String cardName) {
         CastingCost castingCost = this.mtgCardInfo.castingCost(cardName);
+        log.info("{}", castingCost);
 
-        String speechTextFormat = "The casting cost for %s is %s";
-        String text = String.format(speechTextFormat, cardName, castingCost);
-        return SimpleResponseFactory.simpleTellResponse(text, "title");
+        String text = String.format(CAST_COST_SENTANCE_FORMAT, cardName, castingCost.text());
+        return SimpleResponseFactory.simpleTellResponse(text, cardName + " casting cost");
     }
 
     private SpeechletResponse getDescriptionResponse(String cardName) {
         String description = this.mtgCardInfo.description(cardName);
-        String speechTextFormat = "The rules text for %s is %s.";
-        String speechText = String.format(speechTextFormat, cardName, description);
+        String speechText = String.format(DESCRIPTION_SENTANCE_FORMAT, cardName, description);
 
         return SimpleResponseFactory.simpleAskResponse(speechText, cardName + " description");
     }

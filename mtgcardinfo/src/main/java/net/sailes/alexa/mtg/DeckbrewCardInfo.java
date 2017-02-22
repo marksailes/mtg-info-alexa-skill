@@ -17,6 +17,7 @@ public class DeckbrewCardInfo implements MtgCardInfo {
     public static final String KEY_COST = "cost";
     public static final String DECKBREW_CARDS_API_URL = "https://api.deckbrew.com/mtg/cards?name=";
 
+    @Override
     public CastingCost castingCost(String cardName) {
         String castingCost;
         try {
@@ -25,7 +26,7 @@ public class DeckbrewCardInfo implements MtgCardInfo {
         } catch (CardNotFoundException e) {
             castingCost = "we can't find the casting cost for this card.";
         }
-        log.info("Casting cost {}", castingCost);
+        log.info("Casting cost from Deckbrew {}", castingCost);
 
         return DeckbrewCastingCostFactory.create(castingCost);
     }
@@ -40,7 +41,7 @@ public class DeckbrewCardInfo implements MtgCardInfo {
             description = "we can't find the rules for this card.";
         }
 
-        log.info("description {}", description);
+        log.info("Description from Deckbrew {}", description);
 
         return description;
     }
@@ -56,7 +57,7 @@ public class DeckbrewCardInfo implements MtgCardInfo {
                     .execute()
                     .returnContent()
                     .asString();
-            log.info(responseBody);
+            log.debug(responseBody);
         } catch (IOException e) {
             log.error(e.getMessage());
         }
