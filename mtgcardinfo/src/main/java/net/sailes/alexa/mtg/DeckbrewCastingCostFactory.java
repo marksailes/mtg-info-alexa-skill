@@ -1,4 +1,4 @@
-package net.sailes;
+package net.sailes.alexa.mtg;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -29,14 +29,14 @@ public class DeckbrewCastingCostFactory {
 
     public static CastingCost create(String castingCost) {
         if (castingCost.isEmpty()) {
-            return new CastingCost("no casting cost");
+            return new CastingCost(castingCost, "no casting cost");
         }
 
         String[] split = castingCost.replace("{", "").split("}");
 
         StringBuilder sb = processPart(new StringBuilder(), split);
 
-        return new CastingCost(sb.toString());
+        return new CastingCost(castingCost, sb.toString());
     }
 
     private static StringBuilder processPart(StringBuilder sb, String[] split) {

@@ -1,4 +1,4 @@
-package net.sailes;
+package net.sailes.alexa.mtg;
 
 import com.amazon.speech.speechlet.SpeechletResponse;
 import com.amazon.speech.ui.PlainTextOutputSpeech;
@@ -33,5 +33,9 @@ public class SimpleResponseFactory {
         reprompt.setOutputSpeech(speech);
 
         return SpeechletResponse.newTellResponse(speech, card);
+    }
+
+    public static SpeechletResponse unrecognisedCardResponse() {
+        return simpleTellResponse("Sorry, I didn't hear the card name, could you repeat it?", "sorry");
     }
 }

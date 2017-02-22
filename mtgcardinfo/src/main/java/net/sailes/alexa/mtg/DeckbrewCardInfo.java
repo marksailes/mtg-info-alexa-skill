@@ -1,4 +1,4 @@
-package net.sailes;
+package net.sailes.alexa.mtg;
 
 import org.apache.http.client.fluent.Request;
 import org.json.JSONArray;
@@ -72,10 +72,5 @@ public class DeckbrewCardInfo implements MtgCardInfo {
             }
         }
         throw new CardNotFoundException("Could not find card: " + cardName);
-    }
-
-    @Override
-    public String fullInformation(String cardName) {
-        return "some full information";
     }
 }

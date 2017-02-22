@@ -1,4 +1,4 @@
-package net.sailes;
+package net.sailes.alexa.mtg;
 
 import com.amazon.speech.speechlet.lambda.SpeechletRequestStreamHandler;
 

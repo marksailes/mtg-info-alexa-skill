@@ -1,9 +1,9 @@
-package net.sailes;
+package net.sailes.alexa.mtg;
 
 import org.junit.Ignore;
 import org.junit.Test;
 
-import static net.sailes.DeckbrewCastingCostFactory.create;
+import static net.sailes.alexa.mtg.DeckbrewCastingCostFactory.create;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
