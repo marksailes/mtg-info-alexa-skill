@@ -19,31 +19,28 @@ public class DeckbrewCardInfo implements MtgCardInfo {
 
     @Override
     public CastingCost castingCost(String cardName) {
-        String castingCost;
         try {
             JSONObject cardJson = getMatchingCardJson(cardName);
-            castingCost = cardJson.getString(KEY_COST);
+            String castingCost = cardJson.getString(KEY_COST);
+            log.info("Casting cost from Deckbrew [{}]", castingCost);
+            return DeckbrewCastingCostFactory.create(castingCost);
         } catch (CardNotFoundException e) {
-            castingCost = "we can't find the casting cost for this card.";
+            log.error("Deckbrew don't have the Card [{}]", cardName);
+            return new CastingCost("", "We can't find the casting cost for this card.");
         }
-        log.info("Casting cost from Deckbrew {}", castingCost);
-
-        return DeckbrewCastingCostFactory.create(castingCost);
     }
 
     @Override
     public String description(String cardName) {
-        String description;
         try {
             JSONObject cardJson = getMatchingCardJson(cardName);
-            description = cardJson.getString("text");
+            String description = cardJson.getString("text");
+            log.info("Description from Deckbrew [{}]", description);
+            return description;
         } catch (CardNotFoundException e) {
-            description = "we can't find the rules for this card.";
+            log.error("Deckbrew don't have the Card [{}]", cardName);
+            return "We can't find the rules for this card.";
         }
-
-        log.info("Description from Deckbrew {}", description);
-
-        return description;
     }
 
     private JSONObject getMatchingCardJson(String cardName) throws CardNotFoundException {

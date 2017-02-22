@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>net.sailes</groupId>
+    <groupId>net.sailes.alexa</groupId>
     <artifactId>mtg-card-info</artifactId>
     <version>0.1-SNAPSHOT</version>
 
@@ -14,20 +14,24 @@
             <artifactId>fluent-hc</artifactId>
             <version>4.5.3</version>
         </dependency>
-
         <dependency>
             <groupId>org.json</groupId>
             <artifactId>json</artifactId>
             <version>20160810</version>
         </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+            <version>1.7.10</version>
+        </dependency>
 
+        <!-- SUPPLIED BY AWS -->
         <dependency>
             <groupId>com.amazon.alexa</groupId>
             <artifactId>alexa-skills-kit</artifactId>
             <version>1.2</version>
             <scope>compile</scope>
         </dependency>
-
         <dependency>
             <groupId>log4j</groupId>
             <artifactId>log4j</artifactId>
@@ -39,11 +43,6 @@
             <artifactId>slf4j-api</artifactId>
             <version>1.7.10</version>
             <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-log4j12</artifactId>
-            <version>1.7.10</version>
         </dependency>
         <dependency>
             <groupId>org.apache.commons</groupId>
@@ -69,12 +68,8 @@
             <version>1.0.0</version>
             <scope>compile</scope>
         </dependency>
-        <dependency>
-            <groupId>com.amazonaws</groupId>
-            <artifactId>aws-java-sdk-dynamodb</artifactId>
-            <version>1.9.40</version>
-        </dependency>
 
+        <!-- TESTING -->
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>

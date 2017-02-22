@@ -50,7 +50,7 @@ public class MtgCardInfoSpeechlet implements Speechlet {
         if (INTENT_MTG_CASTING_COST.equals(intentName)) {
             Slot cardName = request.getIntent().getSlot(CARDNAME_SLOT_KEY);
 
-            if (cardName == null) {
+            if (cardName == null || cardName.getValue() == null) {
                 return SimpleResponseFactory.unrecognisedCardResponse();
             }
 
@@ -58,9 +58,10 @@ public class MtgCardInfoSpeechlet implements Speechlet {
         } else if (INTENT_MTG_DESCRIPTION.equals(intentName)) {
             Slot cardName = request.getIntent().getSlot(CARDNAME_SLOT_KEY);
 
-            if (cardName == null) {
+            if (cardName == null || cardName.getValue() == null) {
                 return SimpleResponseFactory.unrecognisedCardResponse();
             }
+
             return getDescriptionResponse(cardName.getValue());
         } else if (INTENT_MTG_FULL_INFORMATION.equals(intentName)) {
             return getFullInformationResponse();
