@@ -14,6 +14,6 @@ public final class MtgCardInfoSpeechletRequestStreamHandler extends SpeechletReq
     }
 
     public MtgCardInfoSpeechletRequestStreamHandler() {
-        super(new MtgCardInfoSpeechlet(), supportedApplicationIds);
+        super(new MtgCardInfoSpeechlet(new DeckbrewCardInfo()), supportedApplicationIds);
     }
 }

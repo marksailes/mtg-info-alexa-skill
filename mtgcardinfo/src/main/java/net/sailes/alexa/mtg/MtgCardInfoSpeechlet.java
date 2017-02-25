@@ -18,19 +18,23 @@ public class MtgCardInfoSpeechlet implements Speechlet {
 
     private static final Logger log = LoggerFactory.getLogger(MtgCardInfoSpeechlet.class);
 
-    private static final String INTENT_MTG_CASTING_COST = "MtgCastingCost";
-    private static final String INTENT_MTG_DESCRIPTION = "MtgDescription";
-    private static final String INTENT_MTG_FULL_INFORMATION = "MtgFullInformation";
-    private static final String AMAZON_HELP_INTENT = "AMAZON.HelpIntent";
-    private static final String AMAZON_STOP_INTENT = "AMAZON.StopIntent";
-    private static final String AMAZON_CANCEL_INTENT = "AMAZON.CancelIntent";
+    public static final String INTENT_MTG_CASTING_COST = "MtgCastingCost";
+    public static final String INTENT_MTG_DESCRIPTION = "MtgDescription";
+    public static final String INTENT_MTG_FULL_INFORMATION = "MtgFullInformation";
+    public static final String AMAZON_HELP_INTENT = "AMAZON.HelpIntent";
+    public static final String AMAZON_STOP_INTENT = "AMAZON.StopIntent";
+    public static final String AMAZON_CANCEL_INTENT = "AMAZON.CancelIntent";
 
-    private static final String CARDNAME_SLOT_KEY = "cardname";
+    public static final String CARDNAME_SLOT_KEY = "cardname";
 
     private static final String CAST_COST_SENTANCE_FORMAT = "The casting cost for %s is %s";
     private static final String DESCRIPTION_SENTANCE_FORMAT = "The rules text for %s is %s.";
 
-    private MtgCardInfo mtgCardInfo = new DeckbrewCardInfo();
+    private final MtgCardInfo mtgCardInfo;
+
+    public MtgCardInfoSpeechlet(MtgCardInfo mtgCardInfo) {
+        this.mtgCardInfo = mtgCardInfo;
+    }
 
     public void onSessionStarted(final SessionStartedRequest request, final Session session) throws SpeechletException {
         log.info("onSessionStarted requestId={}, sessionId={}", request.getRequestId(), session.getSessionId());
