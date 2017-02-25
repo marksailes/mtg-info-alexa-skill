@@ -10,6 +10,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
+import static net.sailes.alexa.mtg.Intents.*;
 import static net.sailes.alexa.mtg.MtgCardInfoSpeechlet.*;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;

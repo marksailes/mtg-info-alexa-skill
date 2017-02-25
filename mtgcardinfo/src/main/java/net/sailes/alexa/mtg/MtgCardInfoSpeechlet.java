@@ -14,16 +14,11 @@ import com.amazon.speech.speechlet.Speechlet;
 import com.amazon.speech.speechlet.SpeechletException;
 import com.amazon.speech.speechlet.SpeechletResponse;
 
+import static net.sailes.alexa.mtg.Intents.*;
+
 public class MtgCardInfoSpeechlet implements Speechlet {
 
     private static final Logger log = LoggerFactory.getLogger(MtgCardInfoSpeechlet.class);
-
-    public static final String INTENT_MTG_CASTING_COST = "MtgCastingCost";
-    public static final String INTENT_MTG_DESCRIPTION = "MtgDescription";
-    public static final String INTENT_MTG_FULL_INFORMATION = "MtgFullInformation";
-    public static final String AMAZON_HELP_INTENT = "AMAZON.HelpIntent";
-    public static final String AMAZON_STOP_INTENT = "AMAZON.StopIntent";
-    public static final String AMAZON_CANCEL_INTENT = "AMAZON.CancelIntent";
 
     public static final String CARDNAME_SLOT_KEY = "cardname";
 
@@ -67,14 +62,12 @@ public class MtgCardInfoSpeechlet implements Speechlet {
             }
 
             return getDescriptionResponse(cardName.getValue());
-        } else if (INTENT_MTG_FULL_INFORMATION.equals(intentName)) {
-            return getFullInformationResponse();
         } else if (AMAZON_HELP_INTENT.equals(intentName)) {
             return SimpleResponseFactory.simpleAskResponse("You can ask me about casting costs", "Help");
         } else if (AMAZON_STOP_INTENT.equals(intentName)) {
-            return SimpleResponseFactory.simpleAskResponse("Request stopped", "Stop");
+            return SimpleResponseFactory.simpleTellResponse("Request stopped", "Stop");
         } else if (AMAZON_CANCEL_INTENT.equals(intentName)) {
-            return SimpleResponseFactory.simpleAskResponse("Request cancelled", "Cancel");
+            return SimpleResponseFactory.simpleTellResponse("Request cancelled", "Cancel");
         } else {
             throw new SpeechletException("Invalid Intent");
         }
@@ -92,13 +85,7 @@ public class MtgCardInfoSpeechlet implements Speechlet {
         String description = this.mtgCardInfo.description(cardName);
         String speechText = String.format(DESCRIPTION_SENTANCE_FORMAT, cardName, description);
 
-        return SimpleResponseFactory.simpleAskResponse(speechText, cardName + " description");
-    }
-
-    private SpeechletResponse getFullInformationResponse() {
-        String speechText = "3 blue blue. Draw 3 cards.";
-
-        return SimpleResponseFactory.simpleAskResponse(speechText, "Ponder information");
+        return SimpleResponseFactory.simpleTellResponse(speechText, cardName + " description");
     }
 
     public void onSessionEnded(final SessionEndedRequest request, final Session session) throws SpeechletException {

@@ -36,6 +36,6 @@ public class SimpleResponseFactory {
     }
 
     public static SpeechletResponse unrecognisedCardResponse() {
-        return simpleTellResponse("Sorry, I didn't hear the card name, could you repeat it?", "sorry");
+        return simpleAskResponse("Sorry, I didn't hear the card name, could you repeat it?", "sorry");
     }
 }

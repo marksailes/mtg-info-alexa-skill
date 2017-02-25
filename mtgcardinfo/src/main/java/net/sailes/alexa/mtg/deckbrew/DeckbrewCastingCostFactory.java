@@ -1,5 +1,7 @@
-package net.sailes.alexa.mtg;
+package net.sailes.alexa.mtg.deckbrew;
 
+import net.sailes.alexa.mtg.CastingCost;
+import net.sailes.alexa.mtg.MtgCardInfoSpeechlet;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

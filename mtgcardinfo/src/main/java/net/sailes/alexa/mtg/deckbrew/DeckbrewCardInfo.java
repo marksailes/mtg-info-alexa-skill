@@ -1,5 +1,8 @@
-package net.sailes.alexa.mtg;
+package net.sailes.alexa.mtg.deckbrew;
 
+import net.sailes.alexa.mtg.CardNotFoundException;
+import net.sailes.alexa.mtg.CastingCost;
+import net.sailes.alexa.mtg.MtgCardInfo;
 import org.apache.http.client.fluent.Request;
 import org.json.JSONArray;
 import org.json.JSONObject;
