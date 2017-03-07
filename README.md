@@ -1,2 +1,2 @@
 # mtg-info-alexa-skill
-Alexa skill to query information about mtg cards
+[![Build Status](https://travis-ci.org/marksailes/mtg-info-alexa-skill.svg?branch=master)](https://travis-ci.org/marksailes/mtg-info-alexa-skill)
